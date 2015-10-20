@@ -25,6 +25,7 @@ int main(int argc, const char * argv[]) {
         
         
         fgets(choiceChar, 255, stdin);
+
         
         printf("Input a string: \n");
         
@@ -61,13 +62,14 @@ int main(int argc, const char * argv[]) {
         
         if ([choiceString isEqualToString:@"3"]) {
             //displaying an int
-            
-            if (inputString == nil) {                           //need to fix error checking
+            if ([inputString intValue] == nil) {                           //need to fix error checking
                 
                 NSLog(@"incorrect");
                 
             } else {
+                
                 NSLog(@"%d", [inputString intValue]);
+                
             }
             
         }
@@ -78,7 +80,21 @@ int main(int argc, const char * argv[]) {
             inputString = [inputString stringByAppendingString:eh];
             NSLog(@"%@", inputString);
         }
+        
         if ([choiceString isEqualToString:@"5"]) {
+            //if it ends in a ? I dont know and if it ends in a ! whoa calm down
+            if ([inputString hasSuffix:@"?"]) {
+                NSLog(@"I don't know");
+            }
+            if ([inputString hasSuffix:@"!"]) {
+                NSLog(@"Whoa calm down, man");
+            }
+            
+            
+        }
+        
+        
+        if ([choiceString isEqualToString:@"6"]) {
             //replace spaces with -
             inputString = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
             NSLog(@"%@", inputString);
